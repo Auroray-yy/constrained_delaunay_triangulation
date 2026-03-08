@@ -1,0 +1,51 @@
+#version 460 core
+layout(local_size_x = 1,local_size_y = 1) in;
+layout(rgba32f,binding=0) uniform imageBuffer finally_buffer;
+layout(rgba32f,binding=1) uniform imageBuffer position_buffer;
+layout(rgba32f,binding=2) uniform imageBuffer middle_buffer;
+
+uniform int maxb;
+
+bool le2(vec4 a,vec4 b){
+	float xba=b.x-a.x,yba=b.y-a.y;
+	float y1=-xba/yba*gl_GlobalInvocationID.x+xba/yba*(a.x+b.x)/2+(a.y+b.y)/2;
+	float y2=maxb-1;
+	if(y1>y2)
+		return true;
+	else
+		return false;
+}
+
+void main(){
+	//首先判断最上面的那个元素是否与当前列相交
+	int offset=0;
+	for(int n=0;n<maxb;++n){
+		vec4 t1=imageLoad(middle_buffer,(maxb-1-n)*maxb+int(gl_GlobalInvocationID.x));
+		vec4 t2=imageLoad(middle_buffer,(maxb-2-n)*maxb+int(gl_GlobalInvocationID.x));
+		bool flag=le2(t1,t2);
+		if(!flag)
+			break;
+		else{
+			++offset;
+		}
+	}
+	int stack=offset;
+	for(int i=0;i<maxb;++i){
+		vec4 p=imageLoad(position_buffer,int((maxb-1-i)*maxb+gl_GlobalInvocationID.x));
+		vec4 min_point=vec4(0,0,0,0);
+		double min_d=100000000;
+		//遍历，找出距离最小的种子点
+		for(int j=stack;j<maxb;++j){
+			vec4 temp_p=imageLoad(middle_buffer,int((maxb-1-j)*maxb+gl_GlobalInvocationID.x));
+			if(temp_p.w!=-2)	break;
+			double d=(p.x-temp_p.x)*(p.x-temp_p.x)+(p.y-temp_p.y)*(p.y-temp_p.y);
+			if(min_d>d){
+				min_point=temp_p;
+				min_d=d;
+			}
+		}
+		if(min_point.w!=0){
+			imageStore(finally_buffer,int((maxb-1-i)*maxb+gl_GlobalInvocationID.x),min_point);
+		}
+	}
+}

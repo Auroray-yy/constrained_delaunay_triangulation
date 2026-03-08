@@ -1,0 +1,14 @@
+#version 460
+layout(local_size_x = 64) in;
+
+layout(rgba32f, binding = 0) uniform imageBuffer ssbuffer;
+
+uniform int size;
+
+void main() {
+    int idx = int(gl_GlobalInvocationID.x);
+    vec4 mm = imageLoad(ssbuffer, idx);
+    if (idx < size && mm.w == 3) {
+        imageStore(ssbuffer, idx, vec4(mm.xyz, -2)); 
+    }
+}

@@ -1,0 +1,28 @@
+#version 460 core
+//每个工作组中包含的工作项数1*1
+layout(local_size_x = 256) in;
+
+layout(std430, binding = 0) buffer cross_counters {
+    uint counters[]; 
+};
+layout(std430, binding = 1) buffer offset_counters {
+    uint offsets[]; 
+};
+
+uniform int lsize;
+
+void main(){
+    uint gid = gl_GlobalInvocationID.x;
+
+    if(gid >= lsize) return;
+
+    if(gid==0){
+        offsets[gid]=0;
+        return;
+    }
+
+    for (uint i = 0; i < gid; i++) {
+       offsets[gid] += counters[i];
+    }
+
+}

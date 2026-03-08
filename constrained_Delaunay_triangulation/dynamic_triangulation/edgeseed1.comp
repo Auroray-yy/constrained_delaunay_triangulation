@@ -1,0 +1,13 @@
+#version 460 core
+layout(local_size_x = 1,local_size_y = 1) in;
+layout(rgba32f, binding = 0) uniform imageBuffer finally_buffer;
+layout(rgba32f, binding = 1) uniform imageBuffer edge_buffer;
+layout(rgba32f, binding = 2) uniform imageBuffer border_buffer;
+layout(rgba32f, binding = 3) uniform imageBuffer tri_buffer;
+
+uniform int width;
+uniform int height;
+
+void main(){
+	
+}

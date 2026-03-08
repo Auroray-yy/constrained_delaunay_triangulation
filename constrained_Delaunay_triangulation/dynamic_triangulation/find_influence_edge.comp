@@ -1,0 +1,35 @@
+#version 460
+layout(local_size_x = 1, local_size_y = 1) in;
+//layout(rgba32f, binding = 0) uniform imageBuffer constraint_buffer;
+layout(std430, binding = 0) buffer constraint_edges {
+    vec4 edges[];  // 每两个 vec4 为一组 (x1,y1,x2,y2)，即一条边
+};
+layout(rgba32f, binding = 1) uniform imageBuffer triangle_buffer;
+layout(rgba32f, binding = 2) uniform imageBuffer crossedge_buffer;
+//layout(rgba32f, binding = 3) uniform imageBuffer edge_map_buffer;
+layout(std430, binding = 3) buffer edge_map_buffer {
+    uint maps[]; 
+};
+layout(r32i, binding = 4) uniform iimageBuffer triangle_lock_buffer;
+//layout(r32i, binding = 5) uniform iimageBuffer crossedge_lock_buffer;
+// atomic counters per constraint: 用作 append 指针（宿主需创建并清零）
+layout(std430, binding = 6) buffer atomic_counters {
+    uint counters[]; // length = ce_size
+};
+layout(std430, binding = 7) buffer offset_counters {
+    uint offsets[]; 
+};
+layout(std430, binding = 8) buffer counters_buffer {
+    uint edgecounters[];
+};
+layout(std430, binding = 9) buffer atomic_counters2 {
+    uint counters2[];
+};
+
+uniform int width;
+uniform int height;
+
+
+void main() {
+
+}

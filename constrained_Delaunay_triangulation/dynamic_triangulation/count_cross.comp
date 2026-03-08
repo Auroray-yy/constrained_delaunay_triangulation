@@ -1,0 +1,19 @@
+#version 460 core
+//每个工作组中包含的工作项数1*1
+layout(local_size_x = 1) in;
+layout(std430, binding = 0) buffer constraint_edges {
+    vec4 edges[];  // 每两个 vec4 为一组 (x1,y1,x2,y2)，即一条边
+};
+layout(std430, binding = 1) buffer cross_counters {
+    uint counters[]; // length = ce_size
+};
+layout(rgba32f, binding = 2) uniform imageBuffer tri_buffer;
+
+uniform int width;
+uniform int height;
+
+
+
+void main(){
+   
+}

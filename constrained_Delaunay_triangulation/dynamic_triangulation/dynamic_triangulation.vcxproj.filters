@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="voronoi_diagram">
+      <UniqueIdentifier>{80a58458-65b8-43de-8e2b-0cf18084bea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="delaunay_triangulation">
+      <UniqueIdentifier>{924e9073-5872-41ad-a88f-578782b00268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bgPoints_shader">
+      <UniqueIdentifier>{9c8158e2-fbf3-4ebc-bbac-04f26072370b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="triangle_shader">
+      <UniqueIdentifier>{3518e6aa-f6f9-4eb7-bd54-3b55c25218b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="points_shader">
+      <UniqueIdentifier>{bcdfa936-1051-4fa5-9554-7846e70f687f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lineShader">
+      <UniqueIdentifier>{cbce761d-2811-4c71-a506-e4356b406f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="constraint_triangle">
+      <UniqueIdentifier>{17f145e3-5d5d-4c97-b0fc-f7aff7c1f4f4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="phase2a.comp">
+      <Filter>voronoi_diagram</Filter>
+    </None>
+    <None Include="phase3a.comp">
+      <Filter>voronoi_diagram</Filter>
+    </None>
+    <None Include="bgpointFragment.frag">
+      <Filter>bgPoints_shader</Filter>
+    </None>
+    <None Include="bgpointVertex.vert">
+      <Filter>bgPoints_shader</Filter>
+    </None>
+    <None Include="triangleFragment.frag">
+      <Filter>triangle_shader</Filter>
+    </None>
+    <None Include="triangleVertex.vert">
+      <Filter>triangle_shader</Filter>
+    </None>
+    <None Include="pointFragment.frag">
+      <Filter>points_shader</Filter>
+    </None>
+    <None Include="pointVertex.vert">
+      <Filter>points_shader</Filter>
+    </None>
+    <None Include="tphase1.comp">
+      <Filter>voronoi_diagram</Filter>
+    </None>
+    <None Include="lineVertex.vert">
+      <Filter>lineShader</Filter>
+    </None>
+    <None Include="lineFragment.frag">
+      <Filter>lineShader</Filter>
+    </None>
+    <None Include="init.comp">
+      <Filter>constraint_triangle</Filter>
+    </None>
+    <None Include="edgeseed1.comp">
+      <Filter>delaunay_triangulation</Filter>
+    </None>
+    <None Include="find_influence_edge.comp">
+      <Filter>constraint_triangle</Filter>
+    </None>
+    <None Include="process_edge.comp">
+      <Filter>constraint_triangle</Filter>
+    </None>
+    <None Include="sendtri1.comp">
+      <Filter>delaunay_triangulation</Filter>
+    </None>
+    <None Include="count_cross.comp">
+      <Filter>constraint_triangle</Filter>
+    </None>
+    <None Include="count_offset.comp">
+      <Filter>constraint_triangle</Filter>
+    </None>
+    <None Include="clear.comp">
+      <Filter>constraint_triangle</Filter>
+    </None>
+  </ItemGroup>
+</Project>

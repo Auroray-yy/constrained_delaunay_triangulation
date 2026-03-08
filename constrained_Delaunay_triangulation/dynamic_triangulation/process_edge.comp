@@ -1,0 +1,26 @@
+#version 460
+layout(local_size_x = 1) in;
+layout(std430, binding = 0) buffer constraint_edges {
+    vec4 edges[];  // 每两个 vec4 为一组 (x1,y1,x2,y2)，即一条边
+};
+layout(rgba32f, binding = 1) uniform imageBuffer triangle_buffer;
+layout(rgba32f, binding = 2) uniform imageBuffer crossedge_buffer;
+layout(std430, binding = 3) buffer edge_map_buffer {
+    uint maps[]; 
+};
+layout(r32i, binding = 4) uniform iimageBuffer triangle_lock_buffer;
+layout(rgba32f, binding = 7) uniform imageBuffer edge_out_buffer;
+layout(std430, binding = 8) buffer offset_counters {
+    uint offsets[]; 
+};
+layout(std430, binding = 9) buffer counters_buffer {
+    uint edgecounters[];
+};
+
+uniform int width;
+uniform int height;
+
+
+void main() {
+   
+}
